@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --vh: 100%;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Manrope', sans-serif;
+}
+
+app-root {
+  flex: 1;               /* allow it to fill body */
+  display: flex;         /* pass flex behavior to layout component */
+  flex-direction: column;
+  min-height: 0;         /* prevents scroll issues */
+}
+
+.nav-item, .project-card, button, .language-switch-single {
+  -webkit-tap-highlight-color: transparent;
+}

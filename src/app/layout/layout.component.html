@@ -1,0 +1,89 @@
+<div class="app-container">
+  <header class="app-header" [class.hidden]="!isScrolled">
+    <div class="header-center">
+      <div class="profile-icon" aria-label="Profile"></div>
+      <span class="brand">
+        Ajosuemendez
+      </span>
+      <div class="language-switch-single" aria-label="Toggle language">
+        <img
+          [src]="selectedLang === 'en' ? 'assets/images/english-flag.png' : 'assets/images/german-flag.png'"
+          [alt]="selectedLang === 'en' ? 'English' : 'Deutsch'"
+        />
+      </div>
+    </div>
+  </header>
+
+  <main #contentArea class="app-content">
+    <div class="loading-overlay" *ngIf="debouncedIsLoading">
+      <div class="code-loader">
+        <span class="code-symbol">&lt;&gt;</span>
+        <span class="typing-text">Code in progress…</span>
+        <span class="code-symbol">&lt;/&gt;</span>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </main>
+
+  <nav class="bottom-nav">
+    <button
+      class="nav-item"
+      [class.pressed]="pressedButton === '/'"
+      (touchstart)="handlePress('/')"
+      (click)="navigate('/')"
+    >
+      <span class="nav-icon">
+        <i [ngClass]="pressedButton === '/' ? 'fi fi-sr-home' : 'fi fi-rr-home'"></i>
+      </span>
+      <span class="label">Home</span>
+    </button>
+
+    <button
+      class="nav-item"
+      [class.pressed]="pressedButton === '/videos'"
+      (touchstart)="handlePress('/videos')"
+      (click)="navigate('/videos')"
+    >
+      <span class="nav-icon">
+        <i [ngClass]="pressedButton === '/videos' ? 'fi fi-sr-clapperboard-play' : 'fi fi-rr-clapperboard-play'"></i>
+      </span>
+      <span class="label">Videos</span>
+    </button>
+
+    <button
+      class="nav-item"
+      [class.pressed]="pressedButton === '/courses'"
+      (touchstart)="handlePress('/courses')"
+      (click)="navigate('/courses')"
+    >
+      <span class="nav-icon">
+        <i [ngClass]="pressedButton === '/courses' ? 'fi fi-sr-calendar' : 'fi fi-rr-calendar'"></i>
+      </span>
+      <span class="label">Courses</span>
+    </button>
+
+    <button
+      class="nav-item"
+      [class.pressed]="pressedButton === '/songs'"
+      (touchstart)="handlePress('/songs')"
+      (click)="navigate('/songs')"
+    >
+      <span class="nav-icon">
+        <i [ngClass]="pressedButton === '/songs' ? 'fi fi-sr-music-alt' : 'fi fi-rr-music-alt'"></i>
+      </span>
+      <span class="label">Songs</span>
+    </button>
+
+    <button
+      class="nav-item"
+      [class.pressed]="pressedButton === '/contact'"
+      (touchstart)="handlePress('/contact')"
+      (click)="navigate('/contact')"
+    >
+      <span class="nav-icon">
+        <i [ngClass]="pressedButton === '/contact' ? 'fi fi-sr-user' : 'fi fi-rr-user'"></i>
+      </span>
+      <span class="label">Contact</span>
+    </button>
+  </nav>
+</div>
